@@ -1,0 +1,26 @@
+cpanel
+
+asesgrou
+(?.!%M@zH6,}
+
+ftp
+Server:ftp.asesgroup.com
+Usuario FTP: asesdigitales@asesgroup.com
+Puerto:21
+Clave: H+b3#~lvq$Uu
+
+
+bd
+bd : asesgrou_royalti2
+user : asesgrou_william
+pass : O]]RKqdArRcQ
+
+
+
+
+- Se realizo en el administrador el "cuerpo inicio", este modulo administra las 10 imagenes de cuerpo cada uno tiene titulo, imagen y link, es decir se separo de las imagenes del menu para respetar el diseño de la pagina de inicio
+
+- Se realizo en el administrador dentro del link ""tipo de prenda"  en el boton categorias se elimino las imagenes y ahora solo los textos son administrables, y las imagenes se van agregar dentro del boton "agregar imagenes" que contiene imagen y link, es decir se separo las imagenes del menu para respetar el diseño de la pagina de camisas,zapatos,pantalones,polos,etc
+En tipos de prendas ahora son fijas ya no se pueden mover, pero si editar.
+
+- elimine el boton 'agregar marcas' que estaba en 'tipo de prendas' y lo agregue en el boton 'marcas' y tiene como nuevo nombre 'agregar imagenes', lo hice para que se vea en orden y no confunda ya que cuando damos click en la web al boton marcas se lista todas las marcas y cuando escoges una marca sale una pagina principal de dicha marca que contiene fotos, esas fotos que se agregues se reflerara alli.

@@ -1,0 +1,58 @@
+RewriteEngine On
+RewriteCond ${REQUEST_URI} ^.+$
+RewriteCond %{REQUEST_FILENAME} \.(gif|jpe?g|png|js|css|swf|php|ico|txt|pdf|xml)$ [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule ^ - [L]
+
+RewriteRule ^admin/gestion-consultas$ admin/aplication/modelo/model_productos.php [L]
+RewriteRule ^admin/gestion-mantenimiento$ admin/aplication/modelo/model_mantenimiento.php [L]
+
+#RewriteRule ^asesoria$ asesoria.php [L]
+
+#RewriteRule ^catalogo$ magazine.php [L]
+#RewriteRule ^ofertas$ ofertas.php [L]
+#RewriteRule ^marcas$ marcas.php [L]
+#RewriteRule ^cuenta$ cuenta.php [L]
+RewriteRule ^ideas$ ideas.php [L]
+#RewriteRule ^estilos$ estilos.php [L]
+#RewriteRule ^inicio$ index.php [L]
+#RewriteRule ^filtro-busqueda$ search_filtro.php [L]
+#RewriteRule ^pago$ pago.php [L]
+#RewriteRule ^tiendas$ tiendas.php [L]
+#RewriteRule ^gift_card$ gift_card.php [L]
+#RewriteRule ^registro-email$ registro_email.php [L]
+#RewriteRule ^registro-novedades$ registro_novedades.php [L]
+#RewriteRule ^registro-ofertas$ registro_ofertas.php [L]
+RewriteRule ^validar-cliente$ validacion_cliente.php [L]
+#RewriteRule ^preguntas-frecuentes$ preguntas_frecuentes.php [L]
+#RewriteRule ^accesorios$ productos.php?tipos=6 [L]
+#RewriteRule T-([0-9]+)*. categorias.php?tipos=$1 [L]
+#RewriteRule A-([0-9]+)*. detalle_asesoria.php?id_asesoria=$1 [L]
+#RewriteRule C-([0-9]+)*. productos.php?categoria=$1 [L]
+#RewriteRule S-([0-9]+)*. productos.php?subcategoria=$1 [L]
+
+#RewriteRule sub([0-9]+)-(.*)$ productos.php?subcategoria=$1&filtro=$2 [L]
+#RewriteRule cat([0-9]+)-(.*)$ productos.php?categoria=$1&filtro=$2 [L]
+#RewriteRule M-([0-9]+)*. detalle_marca.php?id_marca=$1 [L]
+#RewriteRule O-([0-9]+)*. ofertas.php?id=$1 [L]
+#RewriteRule D-([0-9]+)*. detalle_producto.php?id_producto=$1 [L]
+#RewriteRule catalogo-([0-9]+)*. detalle_magazine.php?id=$1 [L]
+#RewriteRule ^add-cart$ plantillas/add_cart.php [L]
+#RewriteRule ^validacion-cuenta$ validacion_cuenta.php [L]
+#RewriteRule ^cuenta$ cuenta.php [L]
+#RewriteRule ^pago$ pago.php [L]
+#RewriteRule ^logout$ cerrar_sesion.php [L]
+#RewriteRule admin admin/login.php [L]
+#RewriteRule ^crear-cuenta$ crear_cuenta.php [L]
+
+
+#Enlaces dinamicos en royalty
+RewriteRule admin(.*)$ controller/admin.php [N]
+
+RewriteRule ^(.*)$ controller/default.php [L]
+
+# Enlaces admin
+RewriteRule ^admin/tipo-moneda$ admin/tipos_moneda.php [L]
+

@@ -1,0 +1,166 @@
+/*================================================================================
+	Item Name: Kode
+	Description: Premium Bootstrap Admin Template
+	Author: Egemen Kapusuz
+	Author URL: http://www.themeforest.net/user/egemem
+================================================================================*/
+
+/* ================================================
+Google Web Fonts
+================================================ */
+/* Montserrat */
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+/* Open Sans */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300);
+
+/* === Icons === */
+/* Font Awesome */
+@import url('font-awesome.min.css');
+
+/* ================================================
+Main Css
+================================================ */
+/* Bootstrap Main Css File (unedited) */
+@import url('bootstrap.css');
+
+/* Theme Style */
+@import url('style.css');
+
+/* Responsive Style */
+@import url('responsive.css');
+
+/* Shortcuts Css Codes */
+@import url('shortcuts.css');
+
+/* ================================================
+Plugin Css
+================================================ */
+/* Awesome Bootstrap Checkbox */
+@import url('awesome-bootstrap-checkbox.css');
+
+/* Bootstrap Select */
+@import url('bootstrap-select.css');
+
+/* Bootstrap Select */
+@import url('bootstrap-toggle.min.css');
+
+/* Bootstrap wysihtml5 */
+@import url('bootstrap-wysihtml5.css');
+
+/* Summernote */
+@import url('summernote.css');
+@import url('summernote-bs3.css');
+
+/* Sweet Alert */
+@import url('sweet-alert.css');
+
+/* Data Tables */
+@import url('datatables.css');
+
+/* Chartist */
+@import url('chartist.min.css');
+
+/* Rickshaw */
+@import url('rickshaw.css');
+@import url('detail.css');
+@import url('graph.css');
+@import url('legend.css');
+
+/* Date Range Picker */
+@import url('daterangepicker-bs3.css');
+
+/* Full Calendar */
+@import url('fullcalendar.css');
+
+.no_padding{
+	padding: 0!important;
+}
+
+#maqueta_gallery .tools{
+	margin-bottom: 5px;
+	border: 2px solid;
+	border-radius: 6px;
+}
+#maqueta_gallery .tools .fila:hover,
+#maqueta_gallery .tools .columna:hover{
+	background-color: #dbdbdb;
+}
+#maqueta_gallery .tools .fila,
+#maqueta_gallery .tools .columna  {
+	padding:5px;
+	margin-top:5px;
+	margin-bottom:5px; 
+	background-color: #ccc;
+	border: 1px solid #000;
+}
+#maqueta_gallery .tools .fila .title_fila,
+#maqueta_gallery .tools .columna .title_columna{
+	background-color: #000;
+	color: #fff;
+	border-radius: 8px;
+	padding-left:8px;
+	margin-bottom: 3px;
+}
+#maqueta_gallery .tools .fila .body_fila,
+#maqueta_gallery .tools .columna .body_columna{
+	border: 1px solid;
+	padding: 3px 2px 0 2px;
+}
+#maqueta_gallery .tools .fila input,
+#maqueta_gallery .tools .columna input{
+	text-align: center;
+	height: 20px;
+}
+#maqueta_gallery .tools .columna input{}
+#maqueta_gallery .tools .fila .column_izq{
+	text-align: center;
+}
+#maqueta_gallery .tools .fila .icono{
+	font-size: 35px;
+	cursor: pointer;
+}
+#maqueta_gallery .tools .columna .icono{
+	font-size: 30px;
+	cursor: pointer;	
+}
+#maqueta_gallery .imagenes{
+	background-color: #ccc;
+}
+#maqueta_gallery .imagenes ul li{
+	margin: 7px 7px 1px 15px;
+	border-radius: 8px;
+	border: 1px solid;
+	min-height: 60px;
+}
+#maqueta_gallery .imagenes ul li input{
+
+}
+#maqueta_gallery .imagenes ul li img{
+	max-height: 130px;
+}
+#maqueta_gallery .maqueta{
+	border: 2px solid;
+	border-radius: 6px;
+	margin: 4px 0 0 0;
+	min-height: 300px;
+}
+#maqueta_gallery .maqueta .fila_bloque{
+	background-color: #888;
+	margin: 2px;
+	min-height: 50px;
+	padding: 14px 4px 4px 4px;
+	position: relative;
+}
+#maqueta_gallery .maqueta .fila_bloque .radio_id{
+	position: absolute;
+    box-shadow: none;
+    right: 0;
+    top: 1px;
+    width: 20px;
+    height: 16px;
+    border: none;
+    margin: 0;
+}
+.mensaje{
+	display: none;
+}

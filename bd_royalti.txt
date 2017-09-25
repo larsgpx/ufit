@@ -1,0 +1,1414 @@
+-- phpMyAdmin SQL Dump
+-- version 4.3.8
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generaci�n: 27-03-2016 a las 18:53:52
+-- Versi�n del servidor: 5.5.42-37.1
+-- Versi�n de PHP: 5.4.31
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de datos: `asesgrou_royalti`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_asesorias`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_asesorias` (
+  `id_ase` int(10) NOT NULL,
+  `titulo_ase` varchar(100) NOT NULL,
+  `subtitulo_ase` longtext NOT NULL,
+  `descripcion_ase` longtext NOT NULL,
+  `foto1_ase` varchar(100) NOT NULL,
+  `foto2_ase` varchar(100) NOT NULL,
+  `orden_ase` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_asesorias`
+--
+
+INSERT INTO `tbl_asesorias` (`id_ase`, `titulo_ase`, `subtitulo_ase`, `descripcion_ase`, `foto1_ase`, `foto2_ase`, `orden_ase`) VALUES
+(3, 'ASESORÍA 1', 'Never out of Style items no man should be without Never out of Style', 'From casual Friday to boardroom ready -dress to impress at the office.Choose your work wear category, then shop now or add to your Wish List.', '160215015335asesoria_1.jpg', '160215015335detalle_asesoria.jpg', 0),
+(4, 'ASESORÍA 2', 'Never out of Style items no man should be without Never out of Style', 'From casual Friday to boardroom ready -dress to impress at the office.Choose your work wear category, then shop now or add to your Wish List.', '160215015433asesoria_2.jpg', '160215015433detalle_asesoria.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_asesorias_productos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_asesorias_productos` (
+  `id_ase_pro` int(10) NOT NULL,
+  `fkproducto_ase_pro` int(10) NOT NULL,
+  `fkase_ase_pro` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_asesorias_productos`
+--
+
+INSERT INTO `tbl_asesorias_productos` (`id_ase_pro`, `fkproducto_ase_pro`, `fkase_ase_pro`) VALUES
+(14, 19, 3),
+(15, 20, 3),
+(16, 21, 3),
+(17, 19, 4),
+(18, 20, 4),
+(19, 21, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_categorias`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_categorias` (
+  `id_cate` int(10) NOT NULL,
+  `nombre_cate` varchar(100) NOT NULL,
+  `fktipo_cate` int(10) NOT NULL,
+  `orden_cate` int(10) NOT NULL,
+  `foto_cate` varchar(200) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_categorias`
+--
+
+INSERT INTO `tbl_categorias` (`id_cate`, `nombre_cate`, `fktipo_cate`, `orden_cate`, `foto_cate`) VALUES
+(5, 'RECION LLEGADOS', 1, 1, '160224025810a.jpg'),
+(6, 'COMPRA POR OCASIÓN', 1, 2, '160224025057a.jpg'),
+(7, 'COMPRA MÁS Y AHORRA', 1, 0, '160224025034a.jpg'),
+(8, 'QUE ESTA DE MODA', 1, 3, '160224024955a.jpg'),
+(11, 'chicos', 7, 1, ''),
+(12, 'adultos', 7, 0, ''),
+(13, 'Moda Verano', 4, 0, '160306015537160224025810a.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_categorias_ofertas`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_categorias_ofertas` (
+  `id_cate_oferta` int(10) NOT NULL,
+  `nombre_cate_oferta` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto_cate_oferta` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `banner_cate_oferta` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_categorias_ofertas`
+--
+
+INSERT INTO `tbl_categorias_ofertas` (`id_cate_oferta`, `nombre_cate_oferta`, `foto_cate_oferta`, `banner_cate_oferta`) VALUES
+(2, 'PANTALONES 2X1', '1603241259482.jpg', '1603240100251.jpg'),
+(3, 'CAMISAS 3X1', '1603240100552.jpg', '1603240100551.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_clientes`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_clientes` (
+  `id_cli` int(10) NOT NULL,
+  `nombre_cli` varchar(100) NOT NULL,
+  `email_cli` varchar(100) NOT NULL,
+  `clave_cli` varchar(100) NOT NULL,
+  `pais_cli` varchar(100) NOT NULL,
+  `fecha_cli` date NOT NULL,
+  `pais_facturacion_cli` varchar(100) NOT NULL,
+  `nombre_facturacion_cli` varchar(100) NOT NULL,
+  `apellido_facturacion_cli` varchar(100) NOT NULL,
+  `dir1_facturacion_cli` varchar(100) NOT NULL,
+  `dir2_facturacion_cli` varchar(100) NOT NULL,
+  `provincia_facturacion_cli` varchar(100) NOT NULL,
+  `postal_facturacion_cli` varchar(100) NOT NULL,
+  `tel_facturacion_cli` varchar(100) NOT NULL,
+  `tarjeta_cli` varchar(100) NOT NULL,
+  `mes_tarjeta_cli` varchar(100) NOT NULL,
+  `anio_tarjeta_cli` varchar(100) NOT NULL,
+  `pais_direccion_cli` varchar(100) NOT NULL,
+  `nombre_direccion_cli` varchar(100) NOT NULL,
+  `apellido_direccion_cli` varchar(100) NOT NULL,
+  `dir1_direccion_cli` varchar(100) NOT NULL,
+  `dir2_direccion_cli` varchar(100) NOT NULL,
+  `provincia_direccion_cli` varchar(100) NOT NULL,
+  `postal_direccion_cli` varchar(100) NOT NULL,
+  `tel_direccion_cli` varchar(100) NOT NULL,
+  `envio_cli` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_clientes`
+--
+
+INSERT INTO `tbl_clientes` (`id_cli`, `nombre_cli`, `email_cli`, `clave_cli`, `pais_cli`, `fecha_cli`, `pais_facturacion_cli`, `nombre_facturacion_cli`, `apellido_facturacion_cli`, `dir1_facturacion_cli`, `dir2_facturacion_cli`, `provincia_facturacion_cli`, `postal_facturacion_cli`, `tel_facturacion_cli`, `tarjeta_cli`, `mes_tarjeta_cli`, `anio_tarjeta_cli`, `pais_direccion_cli`, `nombre_direccion_cli`, `apellido_direccion_cli`, `dir1_direccion_cli`, `dir2_direccion_cli`, `provincia_direccion_cli`, `postal_direccion_cli`, `tel_direccion_cli`, `envio_cli`) VALUES
+(5, 'Sandro Pastor Monzon', 'spastor@as.pe', '123', 'Perú', '2016-03-07', '', '', '', '', '', '', '', '', '4140688159567499', 'Enero', '2017', '', '', '', '', '', '', '', '', 'Standar Delivery'),
+(8, 'William', 'wiescobedo@gmail.com', '123', 'Perú', '2016-03-08', 'Perú', 'William', 'Escobedo', 'Petunia 196', 'Petunia 196', 'Lima', ' 51', '4323475', '5345435345345345', 'Febrero', '2018', 'Perú', 'William', 'Escobedo', 'Petunia 1967', 'Petunia 1967', 'Lima', ' 51', '345345', 'Standar Delivery'),
+(9, 'Sandro Pastor', 'comunica@as.pe', '123', 'Perú', '2016-03-09', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(10, 'sandro pastor monzon del poso ', 'comunica@asbtl.pe', 'sandro', 'Perú', '2016-03-15', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Express Delivery');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_clientes_email`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_clientes_email` (
+  `id_em` int(10) NOT NULL,
+  `email_em` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_em` date NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_clientes_email`
+--
+
+INSERT INTO `tbl_clientes_email` (`id_em`, `email_em`, `fecha_em`) VALUES
+(6, 'spastor@as.pe', '2016-03-15'),
+(5, 'wiescobedo@gmail.com', '2016-03-15');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_clientes_novedades`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_clientes_novedades` (
+  `id_no` int(10) NOT NULL,
+  `email_no` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_no` date NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_clientes_novedades`
+--
+
+INSERT INTO `tbl_clientes_novedades` (`id_no`, `email_no`, `fecha_no`) VALUES
+(1, 'wiescobedo@gmail.com', '2016-03-15');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_clientes_ofertas`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_clientes_ofertas` (
+  `id_ofe` int(10) NOT NULL,
+  `email_ofe` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_ofe` date NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_clientes_ofertas`
+--
+
+INSERT INTO `tbl_clientes_ofertas` (`id_ofe`, `email_ofe`, `fecha_ofe`) VALUES
+(1, 'wiescobedo@gmail.com', '2016-03-15'),
+(2, 'undefined', '2016-03-22'),
+(3, 'undefined', '2016-03-22');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_comentarios`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_comentarios` (
+  `id_comentario` int(10) NOT NULL,
+  `titulo_comentario` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `des_comentario` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `estrella_comentario` int(10) NOT NULL,
+  `fkproducto_comentario` int(10) NOT NULL,
+  `fkcliente_comentario` int(10) NOT NULL,
+  `fecha_comentario` date NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_comentarios`
+--
+
+INSERT INTO `tbl_comentarios` (`id_comentario`, `titulo_comentario`, `des_comentario`, `estrella_comentario`, `fkproducto_comentario`, `fkcliente_comentario`, `fecha_comentario`) VALUES
+(2, 'Primer comentario', 'Bacanísimo', 4, 21, 8, '2016-03-27'),
+(3, 'Segundo', 'Test', 4, 21, 8, '2016-03-27'),
+(4, 'TEST', 'test', 2, 21, 8, '2016-03-27');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_filtros`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_filtros` (
+  `id_filtro` int(10) NOT NULL,
+  `nombre_filtro` varchar(100) NOT NULL,
+  `fktipo_filtro` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_filtros`
+--
+
+INSERT INTO `tbl_filtros` (`id_filtro`, `nombre_filtro`, `fktipo_filtro`) VALUES
+(3, 'TALLAS', 1),
+(6, 'COLORES', 1),
+(7, 'TALLA', 2),
+(8, 'filtro uno', 7),
+(9, 'filtro dos', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_ideas`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_ideas` (
+  `id_ide` int(10) NOT NULL,
+  `titulo_ide` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `subtitulo_ide` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion_ide` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `foto1_ide` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto2_ide` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto3_ide` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto4_ide` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto5_ide` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto6_ide` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto7_ide` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `orden_ide` int(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_ideas`
+--
+
+INSERT INTO `tbl_ideas` (`id_ide`, `titulo_ide`, `subtitulo_ide`, `descripcion_ide`, `foto1_ide`, `foto2_ide`, `foto3_ide`, `foto4_ide`, `foto5_ide`, `foto6_ide`, `foto7_ide`, `orden_ide`) VALUES
+(1, 'Idea 1', 'Never out of Style items no man should be without Never out of Style', 'Descripción', '1603211029451.jpg', '1603211032131.jpg', '1603211018121.jpg', '1603211018121.jpg', '1603211018131.jpg', '1603211018131.jpg', '1603211018131.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_ideas_productos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_ideas_productos` (
+  `id_ide_pro` int(10) NOT NULL,
+  `fkideas_ide_pro` int(10) NOT NULL,
+  `fkproducto_ide_pro` int(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_ideas_productos`
+--
+
+INSERT INTO `tbl_ideas_productos` (`id_ide_pro`, `fkideas_ide_pro`, `fkproducto_ide_pro`) VALUES
+(1, 1, 19),
+(2, 1, 20),
+(3, 1, 21);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_items_categoria`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_items_categoria` (
+  `id_item_categoria` int(10) NOT NULL,
+  `nombre_item_categoria` varchar(100) NOT NULL,
+  `fk_item_categoria` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_items_categoria`
+--
+
+INSERT INTO `tbl_items_categoria` (`id_item_categoria`, `nombre_item_categoria`, `fk_item_categoria`) VALUES
+(4, 'Casual', 6),
+(5, 'Oficina', 6),
+(6, 'Urbano', 6),
+(7, '50 a menos', 7),
+(8, '100 a menos', 7),
+(9, 'Tendencias', 8),
+(10, 'Más vendidos', 8),
+(11, 'Zapatos Grandes', 9),
+(12, 'ANCHO 1', 10),
+(13, 'chico uno', 11),
+(14, 'chico dos', 11),
+(15, 'adulto uno', 12),
+(16, 'adulto dos', 12),
+(17, 'Recien Llegados', 13);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_items_filtro`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_items_filtro` (
+  `id_item_filtro` int(10) NOT NULL,
+  `nombre_item_filtro` varchar(100) NOT NULL,
+  `fk_item_filtro` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_items_filtro`
+--
+
+INSERT INTO `tbl_items_filtro` (`id_item_filtro`, `nombre_item_filtro`, `fk_item_filtro`) VALUES
+(5, 'AZUL', 6),
+(6, 'BLANCO', 6),
+(8, 'VERDE', 6),
+(9, 'MORADOS', 6),
+(12, 'S', 3),
+(13, 'M', 3),
+(14, 'L', 3),
+(15, 'XL', 3),
+(16, 'XXL', 3),
+(17, 'TALLA 39', 7),
+(18, 'TALLA 40', 7),
+(19, 'TALLA 41', 7),
+(20, 'filtro lista 1', 8),
+(21, 'filtro lista 2', 8),
+(22, 'filtro lista 22', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_magazines`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_magazines` (
+  `id_ma` int(10) NOT NULL,
+  `titulo_ma` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `subtitulo_ma` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion_ma` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `foto1_ma` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto2_ma` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto3_ma` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto4_ma` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto5_ma` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto6_ma` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto7_ma` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `orden_ma` int(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_magazines`
+--
+
+INSERT INTO `tbl_magazines` (`id_ma`, `titulo_ma`, `subtitulo_ma`, `descripcion_ma`, `foto1_ma`, `foto2_ma`, `foto3_ma`, `foto4_ma`, `foto5_ma`, `foto6_ma`, `foto7_ma`, `orden_ma`) VALUES
+(10, 'LUJOS ILIMITADOS', 'Magazine by Squarzi', 'No illusion, they may be mini but they play a major part in making an impact on your look. With a little design prestidigitation, your mighty IT bag has been nanofied. These tiny totes and satchels are versatile, easily transitioning from day to evening with the ever mercurial shoulder strap turning shoulder bag into clutch in seconds. These elegant little packages appear in colors and hues that enliven and in a plethora of shapes and styles that', '160306104354magazine_3.jpg', '160306104354detalle_magazine_1.jpg', '160306104354detalle_magazine_2.jpg', '160306104354detalle_magazine_2.jpg', '160306104354detalle_magazine_2.jpg', '160306104354detalle_magazine_2.jpg', '160306104354detalle_magazine_2.jpg', 1),
+(12, 'MAGAZINE 2', 'Magazine by Squarzi', 'IT bag has been nanofied. These tiny totes and satchels are versatile, easily transitioning from day to evening with the ever mercurial shoulder strap turning shoulder bag into clutch in seconds. These elegant little packages appear in colors and hues that enliven and in a plethora of shapes and styles that', '160306104657magazine_3.jpg', '160306104657detalle_magazine_1.jpg', '160306104657detalle_magazine_2.jpg', '160306104657detalle_magazine_2.jpg', '160306104657detalle_magazine_2.jpg', '160306104657detalle_magazine_2.jpg', '160306104657detalle_magazine_2.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_magazines_productos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_magazines_productos` (
+  `id_ma_pro` int(10) NOT NULL,
+  `fkmagazine_ma_pro` int(10) NOT NULL,
+  `fkproducto_ma_pro` int(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_magazines_productos`
+--
+
+INSERT INTO `tbl_magazines_productos` (`id_ma_pro`, `fkmagazine_ma_pro`, `fkproducto_ma_pro`) VALUES
+(6, 12, 21),
+(5, 12, 20),
+(4, 12, 19),
+(7, 10, 19),
+(8, 10, 20),
+(9, 10, 21);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_marcas`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_marcas` (
+  `id_marca` int(10) NOT NULL,
+  `nombre_marca` varchar(100) NOT NULL,
+  `foto1_marca` varchar(100) NOT NULL,
+  `foto2_marca` varchar(100) NOT NULL,
+  `banner_marca` varchar(100) NOT NULL,
+  `orden_marca` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_marcas`
+--
+
+INSERT INTO `tbl_marcas` (`id_marca`, `nombre_marca`, `foto1_marca`, `foto2_marca`, `banner_marca`, `orden_marca`) VALUES
+(2, 'Rock & Republic', '160125030516marca_1.png', '160125030516marca_1.jpg', '1602010151451.jpg', 2),
+(3, 'Aeropostale', '160125030617marca_2.png', '160125030617marca_2.jpg', '160125030617detalle_marca_1.jpg', 1),
+(4, 'Innovatore', '160125031802marca_3.png', '160125031802marca_3.jpg', '1602011138591.jpg', 0),
+(5, 'Ritzy of Italy', '160125031856marca_4.png', '160125031856marca_4.jpg', '1602011232381.jpg', 3),
+(6, 'Renzo Lucciano', '160125032118marca_5.png', '160125032118marca_5.jpg', '1602010349421.jpg', 5),
+(7, 'Hartzvolk', '160125032235marca_6.png', '160125032235marca_6.jpg', '1602010403111.jpg', 6),
+(8, 'Stropicciato', '160125032319marca_7.png', '160125032319marca_7.jpg', '1602010417221.jpg', 7),
+(9, 'Enorgie', '160125032739marca_8.png', '160125032739marca_8.jpg', '1602010157551.jpg', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_ofertas`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_ofertas` (
+  `id_oferta` int(10) NOT NULL,
+  `desde_oferta` date NOT NULL,
+  `hasta_oferta` date NOT NULL,
+  `fkproducto_oferta` int(10) NOT NULL,
+  `fkcategoria_oferta` int(10) NOT NULL,
+  `estado_oferta` int(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_ofertas`
+--
+
+INSERT INTO `tbl_ofertas` (`id_oferta`, `desde_oferta`, `hasta_oferta`, `fkproducto_oferta`, `fkcategoria_oferta`, `estado_oferta`) VALUES
+(1, '0000-00-00', '0000-00-00', 22, 2, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_pagos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_pagos` (
+  `id` int(10) NOT NULL,
+  `datos_array` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `email_cliente` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_pago` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `total` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `estado` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `txn_id` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `email_empresa` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `comision` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_cancelado` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `orden` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_pagos`
+--
+
+INSERT INTO `tbl_pagos` (`id`, `datos_array`, `email_cliente`, `fecha_pago`, `total`, `estado`, `txn_id`, `email_empresa`, `comision`, `fecha_cancelado`, `orden`) VALUES
+(1, '21-1,-0-8', 'millyt-buyer@netkrom.com', '09:38:45 Mar 19, 2016 PDT', '139.00', 'Completed', '77D367657M341483W', 'millyt-facilitator@netkrom.com', '4.33', '09:38:45 Mar 19, 2016 PDT', 'RY03192016');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_popup`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_popup` (
+  `id_popup` int(10) NOT NULL,
+  `nombre_popup` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `des_popup` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `ancho_popup` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `titulo_popup` varchar(500) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_popup`
+--
+
+INSERT INTO `tbl_popup` (`id_popup`, `nombre_popup`, `des_popup`, `ancho_popup`, `titulo_popup`) VALUES
+(1, 'ULTIMAS PROMOCIONES', '<table align="center" cellpadding="0" cellspacing="0" style="width:90%">\r\n	<tbody>\r\n		<tr>\r\n			<td><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Special Offer<br />\r\n			$15 Off a $100 Order<br />\r\n			$25 Off a $150 Order<br />\r\n			$50 Off a $250 Order</strong></span></span></td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<div style="width:100%; height:1px;background-color:#666">&nbsp;</div>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>TO REDEEM OFFERS:</strong></span></span>\r\n			<ul>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Add qualifying items totaling $100 or more to your shopping bag.</strong></span></span></li>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Enter offer code FALL2015 at checkout.</strong></span></span></li>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Discount will be deducted after offer code is applied.</strong></span></span></li>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Valid through 11:59pm PT September 9, 2015.</strong></span></span></li>\r\n			</ul>\r\n			<span style="font-family:arial,helvetica,sans-serif"> <span style="font-size:12px"><strong> OFFER EXCLUDES THE FOLLOWING:</strong></span></span>\r\n\r\n			<ul>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Clearance (items with prices ending in $.99), non-Victoria&rsquo;s Secret brands, gift cards, gift wrap &amp; kits, store and previous purchases do not qualify toward offer eligibility.</strong></span></span></li>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Shipping &amp; handling and taxes do not qualify towards the minimum purchase.</strong></span></span></li>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Not valid with shipping offers or other offers that provide discounts on your entire order.</strong></span></span></li>\r\n			</ul>\r\n\r\n			<p><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>OFFER EXCLUDES THE FOLLOWING:</strong></span></span></p>\r\n\r\n			<ul>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Clearance (items with prices ending in $.99), non-Victoria&rsquo;s Secret brands, gift cards, gift wrap &amp; kits, store and previous purchases do not qualify toward offer eligibility.</strong></span></span></li>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Shipping &amp; handling and taxes do not qualify towards the minimum purchase.</strong></span></span></li>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Not valid with shipping offers or other offers that provide discounts on your entire order.</strong></span></span></li>\r\n			</ul>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', '400', '$15 y $100, EN ULTIMAS PROMOCIONES Precio en soles. Código 2016.'),
+(2, 'ENVIO GRATUITO A TODO EL PERÚ', '<table align="center" cellpadding="0" cellspacing="0" style="width:90%">\r\n	<tbody>\r\n		<tr>\r\n			<td style="text-align:center">\r\n			<p><span style="font-size:14px"><span style="font-family:comic sans ms,cursive"><strong>ENV&Iacute;O A PER&Uacute;</strong></span></span><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>&nbsp;&nbsp;<img alt="" src="http://asesdigitales.pe/clientes/royalti/images/icono_peru.jpg" /></strong></span></span></p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Le felicitamos comprar desde Per&uacute; con:</strong></span></span>\r\n			<ul>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Todos los precios en nuevo sol peruano</strong></span></span></li>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Los aranceles y el IGV se calculan a pagar</strong></span></span></li>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Tarifas bajas para env&iacute;o internacional</strong></span></span></li>\r\n				<li><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:12px"><strong>Costo total de importaci&oacute;n (Sin cargos adicionales en la entrega)</strong></span></span></li>\r\n			</ul>\r\n			<span style="font-family:arial,helvetica,sans-serif"> <span style="font-size:12px"> <strong> Informaci&oacute;n adicional sobre env&iacute;os internacionales esta disponible en nuestro sitio Web: <a href="http://www.royalty.pe">http://www.royalty.pe</a></strong></span></span><br />\r\n			&nbsp;</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', '400', ''),
+(3, 'FACIL DEVOLUCION', '<table align="center" cellpadding="0" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p><strong>&nbsp;&nbsp;<img alt="" src="http://asesdigitales.pe/clientes/royalti/images/logo.png" style="height:45px; width:247px" /></strong></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<table align="center" cellpadding="0" cellspacing="0" style="width:90%">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p style="text-align: justify;"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Lorem Ipsum&nbsp;es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto&nbsp;de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la&nbsp;imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos&nbsp;especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os, sino que tambien ingres&oacute; como texto de relleno en documentos&nbsp;electr&oacute;nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaci&oacute;n de las hojas&nbsp;&quot;Letraset&quot;, las cuales contenian pasajes de Lorem Ipsum, y m&aacute;s recientemente con software de autoedici&oacute;n, como&nbsp;por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</span></span></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', '400', ''),
+(6, 'Mapa de sitio', '<table align="center" cellpadding="0" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p><strong>&nbsp;&nbsp;<img alt="" src="http://asesdigitales.pe/clientes/royalti/images/logo.png" style="height:45px; width:247px" /></strong></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<table align="center" cellpadding="0" cellspacing="0" style="width:90%">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p style="text-align:justify"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Lorem Ipsum&nbsp;es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto&nbsp;de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la&nbsp;imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos&nbsp;especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os, sino que tambien ingres&oacute; como texto de relleno en documentos&nbsp;electr&oacute;nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaci&oacute;n de las hojas&nbsp;&quot;Letraset&quot;, las cuales contenian pasajes de Lorem Ipsum, y m&aacute;s recientemente con software de autoedici&oacute;n, como&nbsp;por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</span></span></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', '500', ''),
+(7, 'Terminos & Noticias', '<table align="center" cellpadding="0" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p><strong>&nbsp;&nbsp;<img alt="" src="http://asesdigitales.pe/clientes/royalti/images/logo.png" style="height:45px; width:247px" /></strong></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<table align="center" cellpadding="0" cellspacing="0" style="width:90%">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p style="text-align:justify"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Lorem Ipsum&nbsp;es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto&nbsp;de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la&nbsp;imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos&nbsp;especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os, sino que tambien ingres&oacute; como texto de relleno en documentos&nbsp;electr&oacute;nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaci&oacute;n de las hojas&nbsp;&quot;Letraset&quot;, las cuales contenian pasajes de Lorem Ipsum, y m&aacute;s recientemente con software de autoedici&oacute;n, como&nbsp;por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</span></span></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', '500', ''),
+(8, 'Privacidad y Seguridad', '<table align="center" cellpadding="0" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p><strong>&nbsp;&nbsp;<img alt="" src="http://asesdigitales.pe/clientes/royalti/images/logo.png" style="height:45px; width:247px" /></strong></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<table align="center" cellpadding="0" cellspacing="0" style="width:90%">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p style="text-align:justify"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Lorem Ipsum&nbsp;es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto&nbsp;de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la&nbsp;imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos&nbsp;especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os, sino que tambien ingres&oacute; como texto de relleno en documentos&nbsp;electr&oacute;nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaci&oacute;n de las hojas&nbsp;&quot;Letraset&quot;, las cuales contenian pasajes de Lorem Ipsum, y m&aacute;s recientemente con software de autoedici&oacute;n, como&nbsp;por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</span></span></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>', '500', ''),
+(9, 'Privacidad Perú', '<table align="center" cellpadding="0" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p><strong>&nbsp;&nbsp;<img alt="" src="http://asesdigitales.pe/clientes/royalti/images/logo.png" style="height:45px; width:247px" /></strong></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<table align="center" cellpadding="0" cellspacing="0" style="width:90%">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p style="text-align:justify"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Lorem Ipsum&nbsp;es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto&nbsp;de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la&nbsp;imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos&nbsp;especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os, sino que tambien ingres&oacute; como texto de relleno en documentos&nbsp;electr&oacute;nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaci&oacute;n de las hojas&nbsp;&quot;Letraset&quot;, las cuales contenian pasajes de Lorem Ipsum, y m&aacute;s recientemente con software de autoedici&oacute;n, como&nbsp;por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</span></span></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', '500', ''),
+(10, 'Tecnología', '<table align="center" cellpadding="0" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p><strong>&nbsp;&nbsp;<img alt="" src="http://asesdigitales.pe/clientes/royalti/images/logo.png" style="height:45px; width:247px" /></strong></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<table align="center" cellpadding="0" cellspacing="0" style="width:90%">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p style="text-align:justify"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Lorem Ipsum&nbsp;es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto&nbsp;de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la&nbsp;imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos&nbsp;especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os, sino que tambien ingres&oacute; como texto de relleno en documentos&nbsp;electr&oacute;nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaci&oacute;n de las hojas&nbsp;&quot;Letraset&quot;, las cuales contenian pasajes de Lorem Ipsum, y m&aacute;s recientemente con software de autoedici&oacute;n, como&nbsp;por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</span></span></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', '500', ''),
+(11, 'SSL Pago Seguro', '<table align="center" cellpadding="0" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p><strong>&nbsp;&nbsp;<img alt="" src="http://asesdigitales.pe/clientes/royalti/images/logo.png" style="height:45px; width:247px" /></strong></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<table align="center" cellpadding="0" cellspacing="0" style="width:90%">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p style="text-align:justify"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Lorem Ipsum&nbsp;es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto&nbsp;de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la&nbsp;imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos&nbsp;especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os, sino que tambien ingres&oacute; como texto de relleno en documentos&nbsp;electr&oacute;nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaci&oacute;n de las hojas&nbsp;&quot;Letraset&quot;, las cuales contenian pasajes de Lorem Ipsum, y m&aacute;s recientemente con software de autoedici&oacute;n, como&nbsp;por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</span></span></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', '500', ''),
+(4, 'ENTREGA EN TODO EL MUNDO MEMBRESIA', '<table align="center" cellpadding="0" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p><strong>&nbsp;&nbsp;<img alt="" src="http://asesdigitales.pe/clientes/royalti/images/logo.png" style="height:45px; width:247px" /></strong></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<table align="center" cellpadding="0" cellspacing="0" style="width:90%">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p style="text-align:justify"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Lorem Ipsum&nbsp;es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto&nbsp;de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la&nbsp;imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos&nbsp;especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os, sino que tambien ingres&oacute; como texto de relleno en documentos&nbsp;electr&oacute;nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaci&oacute;n de las hojas&nbsp;&quot;Letraset&quot;, las cuales contenian pasajes de Lorem Ipsum, y m&aacute;s recientemente con software de autoedici&oacute;n, como&nbsp;por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</span></span></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', '400', ''),
+(5, 'BENEFICIO DE MI CUENTA', '<table align="center" cellpadding="0" cellspacing="0" style="width:90%">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p style="text-align:justify"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Lorem Ipsum&nbsp;es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto&nbsp;de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la&nbsp;imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos&nbsp;especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os, sino que tambien ingres&oacute; como texto de relleno en documentos&nbsp;electr&oacute;nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaci&oacute;n de las hojas&nbsp;&quot;Letraset&quot;, las cuales contenian pasajes de Lorem Ipsum, y m&aacute;s recientemente con software de autoedici&oacute;n, como&nbsp;por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</span></span></p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', '600', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_popup_home`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_popup_home` (
+  `id_popup_home` int(10) NOT NULL,
+  `nombre_popup_home` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `des_popup_home` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `ancho_popup_home` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto_popup_home` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `orden_popup_home` int(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_popup_home`
+--
+
+INSERT INTO `tbl_popup_home` (`id_popup_home`, `nombre_popup_home`, `des_popup_home`, `ancho_popup_home`, `foto_popup_home`, `orden_popup_home`) VALUES
+(3, 'PRUEBA', '<table align="center" cellpadding="0" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td><span style="font-size:12px"><span style="font-family:arial,helvetica,sans-serif">Lorem Ipsum&nbsp;es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto&nbsp;de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la&nbsp;imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos&nbsp;especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os, sino que tambien ingres&oacute; como texto de relleno en documentos&nbsp;electr&oacute;nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaci&oacute;n de las hojas&nbsp;&quot;Letraset&quot;, las cuales contenian pasajes de Lorem Ipsum, y m&aacute;s recientemente con software de autoedici&oacute;n, como&nbsp;por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</span></span></td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', '600', '160315022922imagen_popup.jpg', 1),
+(4, '¿QUÉ HAY DE NUEVO?', '', '600', '160315022827imagen_popup.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_preguntas`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_preguntas` (
+  `id_pre` int(10) NOT NULL,
+  `titulo_pre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `respuesta_pre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `fktema_pre` int(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_preguntas`
+--
+
+INSERT INTO `tbl_preguntas` (`id_pre`, `titulo_pre`, `respuesta_pre`, `fktema_pre`) VALUES
+(4, 'PREGUNTA 2', 'RESPUESTA 2', 2),
+(5, 'Pregunta 1', 'Respuesta 1', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_productos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_productos` (
+  `id_producto` int(10) NOT NULL,
+  `titulo_producto` varchar(100) NOT NULL,
+  `precio_producto` varchar(100) NOT NULL,
+  `descripcion_producto` longtext NOT NULL,
+  `codigo_producto` varchar(100) NOT NULL,
+  `fktipo_producto` int(10) NOT NULL,
+  `foto_producto` varchar(100) NOT NULL,
+  `precio_oferta_producto` varchar(100) NOT NULL,
+  `oferta_producto` varchar(100) NOT NULL,
+  `orden_oferta_producto` int(10) NOT NULL,
+  `foto1_producto` varchar(100) NOT NULL,
+  `foto2_producto` varchar(100) NOT NULL,
+  `foto3_producto` varchar(100) NOT NULL,
+  `foto4_producto` varchar(100) NOT NULL,
+  `foto5_producto` varchar(100) NOT NULL,
+  `foto6_producto` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_productos`
+--
+
+INSERT INTO `tbl_productos` (`id_producto`, `titulo_producto`, `precio_producto`, `descripcion_producto`, `codigo_producto`, `fktipo_producto`, `foto_producto`, `precio_oferta_producto`, `oferta_producto`, `orden_oferta_producto`, `foto1_producto`, `foto2_producto`, `foto3_producto`, `foto4_producto`, `foto5_producto`, `foto6_producto`) VALUES
+(19, 'Aldo', '249', 'Mezcla de algodón que absorbe la humedad', 'PC-ALDO', 4, '160224125646pc-aldo-2_470x660.jpg', '150', '', 1, '1603060604391.jpg', '1603060604391.jpg', '1603060604391.jpg', '1603060604391.jpg', '1603060604391.jpg', '1603060604391.jpg'),
+(20, 'Frank', '99', '100 % algodón. Polo casual super resistente', 'PC-FRANK', 4, '160224010419polo-frank-1_470x660.jpg', '80', '', 0, '1603060607411.jpg', '1603060607411.jpg', '1603060607411.jpg', '1603060607411.jpg', '1603060607411.jpg', '1603060607411.jpg'),
+(21, 'Venanzio', '139', 'Camisa estampada 100 % algodón Pyma. Extra suave Slim Fit ceñida', 'KL-VENANZIO', 1, '160224010758kl-venanzio-4_470x660.jpg', '100', '', 0, '1603060610431.jpg', '1603060610431.jpg', '1603060610431.jpg', '1603060610441.jpg', '1603060610441.jpg', '1603060610441.jpg'),
+(22, 'Oferta pantalón', '100', 'desDD', '67567', 3, '1603240259032.jpg', '80', 'SI', 0, '1603240259032.jpg', '1603240259032.jpg', '1603240259032.jpg', '1603240259032.jpg', '1603240259032.jpg', '1603240259032.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_productos_caracteristicas`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_productos_caracteristicas` (
+  `id_cara` int(10) NOT NULL,
+  `titulo_cara` varchar(100) NOT NULL,
+  `detalle_cara` varchar(100) NOT NULL,
+  `descripcion_cara` longtext NOT NULL,
+  `fkproducto_cara` int(10) NOT NULL,
+  `orden_cara` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_productos_caracteristicas`
+--
+
+INSERT INTO `tbl_productos_caracteristicas` (`id_cara`, `titulo_cara`, `detalle_cara`, `descripcion_cara`, `fkproducto_cara`, `orden_cara`) VALUES
+(1, 'Descripción', '', 'Esta impecable camisa blanca está confeccionada según nuestro patrón Slim con algodón egipcio washed 100% de Albiate. El cuello italiano curvo y un puño sencillo la convierten en la opción perfecta para prácticamente cualquier ocasión', 5, 1),
+(2, 'Tejido', '', 'Algodón Egipcio', 5, 0),
+(3, 'Tejido', 'Holandes', '', 6, 0),
+(4, 'Puño', 'Cuadrado', '', 6, 0),
+(5, 'Descripción', '', 'Este producto lorem ipsus  lorem ipsus   lorem ipsus  lorem ipsus', 6, 0),
+(6, 'Tipo', 'Cuero', 'desss', 7, 0),
+(7, 'Pasador', 'No tiene', '', 7, 0),
+(8, 'Descripción', '', 'Este zapato puede volar', 7, 0),
+(9, 'Color', 'azul', '', 8, 0),
+(10, 'Puño', 'Verde', '', 10, 0),
+(11, 'CANZONCILLO DE VERANO', 'DETALLE', 'ESTE ....', 18, 0),
+(12, 'Detalle1', 'sub_Detalle1', 'test_Detalle1', 19, 0),
+(13, 'Detalle2', 'sub_Detalle2', 'test_Detalle1', 19, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_productos_categorias`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_productos_categorias` (
+  `id_productos_categorias` int(10) NOT NULL,
+  `fkproducto_productos_categorias` int(10) NOT NULL,
+  `fkcategoria_productos_categorias` int(10) NOT NULL,
+  `fksubcategoria_productos_categorias` int(10) NOT NULL,
+  `fktipo_productos_categorias` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_productos_categorias`
+--
+
+INSERT INTO `tbl_productos_categorias` (`id_productos_categorias`, `fkproducto_productos_categorias`, `fkcategoria_productos_categorias`, `fksubcategoria_productos_categorias`, `fktipo_productos_categorias`) VALUES
+(1, 5, 6, 4, 1),
+(2, 6, 8, 10, 1),
+(3, 7, 9, 11, 2),
+(4, 8, 6, 4, 1),
+(5, 9, 7, 7, 1),
+(6, 10, 7, 7, 1),
+(7, 11, 7, 7, 1),
+(8, 12, 10, 12, 3),
+(9, 13, 10, 12, 3),
+(10, 14, 10, 12, 3),
+(11, 15, 10, 12, 3),
+(12, 16, 9, 11, 2),
+(13, 18, 11, 13, 7),
+(14, 21, 6, 4, 1),
+(15, 19, 13, 17, 4),
+(16, 20, 13, 17, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_productos_filtros`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_productos_filtros` (
+  `id_producto_filtros` int(10) NOT NULL,
+  `fkproducto_productos_filtros` int(10) NOT NULL,
+  `fkfiltro_productos_filtros` int(10) NOT NULL,
+  `fksubfiltro_productos_filtros` int(10) NOT NULL,
+  `fktipo_productos_filtros` int(10) NOT NULL,
+  `foto_productos_filtros` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_productos_filtros`
+--
+
+INSERT INTO `tbl_productos_filtros` (`id_producto_filtros`, `fkproducto_productos_filtros`, `fkfiltro_productos_filtros`, `fksubfiltro_productos_filtros`, `fktipo_productos_filtros`, `foto_productos_filtros`) VALUES
+(2, 5, 3, 16, 1, ''),
+(3, 5, 6, 6, 1, ''),
+(4, 7, 7, 19, 2, ''),
+(5, 7, 7, 18, 2, ''),
+(6, 8, 6, 5, 1, ''),
+(7, 9, 6, 6, 1, ''),
+(8, 10, 6, 6, 1, ''),
+(9, 11, 3, 13, 1, ''),
+(10, 16, 7, 17, 2, ''),
+(11, 18, 8, 20, 7, ''),
+(14, 21, 3, 12, 1, '.'),
+(15, 21, 3, 13, 1, '.'),
+(16, 21, 6, 5, 1, '1603271231271.jpg'),
+(17, 21, 6, 6, 1, '1603271231401.jpg'),
+(18, 21, 6, 9, 1, '1603271231511.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_productos_fotos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_productos_fotos` (
+  `id_productos_fotos` int(10) NOT NULL,
+  `fkproducto_productos_fotos` int(10) NOT NULL,
+  `nombre_productos_fotos` varchar(100) NOT NULL,
+  `orden_productos_fotos` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_productos_fotos`
+--
+
+INSERT INTO `tbl_productos_fotos` (`id_productos_fotos`, `fkproducto_productos_fotos`, `nombre_productos_fotos`, `orden_productos_fotos`) VALUES
+(2, 5, '160125025808foto_detalle_1.jpg', 2),
+(3, 5, '160125025813foto_detalle_2.jpg', 1),
+(4, 5, '160125025819foto_detalle_3.jpg', 0),
+(5, 6, '160125052148foto_detalle_1.jpg', 0),
+(6, 6, '160125052155foto_detalle_2.jpg', 1),
+(7, 7, '1601271105571.jpg', 1),
+(8, 7, '1601271106022.jpg', 0),
+(9, 8, '160209030149camisa azul (2).jpg', 0),
+(10, 8, '160209030228camisa azul (3).jpg', 0),
+(11, 8, '160209030252camisa azul (4).jpg', 0),
+(12, 9, '160209030533camisa blanca (2).jpg', 0),
+(13, 9, '160209030615camisa blanca (3).jpg', 0),
+(14, 9, '160209030640camisa blanca (4).jpg', 0),
+(15, 10, '160209031204camisa celesta (1).jpg', 0),
+(16, 10, '160209031218camisa celesta (2).jpg', 0),
+(17, 10, '160209031231camisa celesta (3).jpg', 0),
+(18, 11, '160209032444camisa marron (1).jpg', 0),
+(19, 11, '160209032627camisa marron (2).jpg', 0),
+(20, 11, '160209032647camisa marron (4).jpg', 0),
+(21, 12, '160209033052pantalon-azul-(1).jpg', 0),
+(22, 12, '160209033105pantalon-azul-(2).jpg', 0),
+(23, 12, '160209033141pantalon-azul-(3).jpg', 0),
+(24, 13, '160209033331pantalon-beish-(2).jpg', 0),
+(25, 13, '160209033411pantalon-beish-(3).jpg', 0),
+(26, 13, '160209033437pantalon-beish-(4).jpg', 0),
+(27, 14, '160209033608pantalon-gris-(1).jpg', 0),
+(28, 14, '160209033644pantalon-gris-(2).jpg', 0),
+(29, 14, '160209033708pantalon-gris-(3).jpg', 0),
+(30, 15, '160209034830pantalon-negrol-(2).jpg', 0),
+(31, 15, '160209034849pantalon-negrol-(3).jpg', 0),
+(32, 15, '160209034907pantalon-negrol-(4).jpg', 0),
+(33, 16, '160209035805zapato-azul-(1).jpg', 0),
+(34, 16, '160209035815zapato-azul-(2).jpg', 0),
+(35, 16, '160209035919zapato-azul-(3).jpg', 0),
+(36, 17, '160209040304zapato-marron-(1).jpg', 0),
+(37, 17, '160209040313zapato-marron-(2).jpg', 0),
+(38, 17, '160209040324zapato-marron-(3).jpg', 0),
+(39, 18, '160216042533chrysanthemum.jpg', 1),
+(40, 18, '160216042602koala.jpg', 0),
+(41, 19, '160224010139pc-aldo-2.jpg', 0),
+(42, 20, '160224010504polo-frank-1.jpg', 0),
+(43, 20, '160224010526polo-frank-2.jpg', 0),
+(44, 20, '160224010539polo-frank-3.jpg', 0),
+(45, 20, '160224010558polo-frank-4.jpg', 0),
+(46, 20, '160224010612polo-frank-5.jpg', 0),
+(47, 20, '160224010625polo-frank-6.jpg', 0),
+(48, 21, '160224010940kl-venanzio-2.jpg', 0),
+(49, 21, '160224011023kl-venanzio-3.jpg', 0),
+(50, 21, '160224011042kl-venanzio-4.jpg', 0),
+(51, 21, '160224011058kl-venanzio-6.jpg', 0),
+(52, 21, '160224011126kl-venanzio-negro-1.jpg', 0),
+(53, 21, '160224011234kl-venanzio-5.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_productos_marcas`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_productos_marcas` (
+  `id_productos_marcas` int(10) NOT NULL,
+  `fkproducto_productos_marcas` int(10) NOT NULL,
+  `fkmarca_productos_marcas` int(10) NOT NULL,
+  `fktipo_productos_marcas` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_productos_marcas`
+--
+
+INSERT INTO `tbl_productos_marcas` (`id_productos_marcas`, `fkproducto_productos_marcas`, `fkmarca_productos_marcas`, `fktipo_productos_marcas`) VALUES
+(2, 5, 2, 1),
+(3, 6, 2, 1),
+(4, 7, 8, 2),
+(5, 8, 4, 1),
+(6, 9, 5, 1),
+(7, 10, 5, 1),
+(8, 11, 2, 1),
+(9, 12, 6, 3),
+(10, 13, 3, 3),
+(11, 14, 4, 3),
+(12, 15, 9, 3),
+(13, 16, 2, 2),
+(14, 17, 9, 2),
+(15, 18, 2, 7),
+(16, 19, 5, 4),
+(17, 20, 3, 4),
+(18, 21, 4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_relacionar_productos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_relacionar_productos` (
+  `id_re_pro` int(10) NOT NULL,
+  `fkproducto1_re_pro` int(10) NOT NULL,
+  `fkproducto2_re_pro` int(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_relacionar_productos`
+--
+
+INSERT INTO `tbl_relacionar_productos` (`id_re_pro`, `fkproducto1_re_pro`, `fkproducto2_re_pro`) VALUES
+(7, 19, 20),
+(5, 20, 19),
+(3, 21, 19),
+(4, 21, 20),
+(6, 20, 21),
+(8, 19, 21);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_roles`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_roles` (
+  `id_rol` int(11) NOT NULL,
+  `nombre_rol` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbl_roles`
+--
+
+INSERT INTO `tbl_roles` (`id_rol`, `nombre_rol`) VALUES
+(4, 'Administrador'),
+(5, 'Usuario');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_temas`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_temas` (
+  `id_tema` int(10) NOT NULL,
+  `titulo_tema` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `orden_tema` int(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_temas`
+--
+
+INSERT INTO `tbl_temas` (`id_tema`, `titulo_tema`, `orden_tema`) VALUES
+(1, 'TEMA 1', 0),
+(2, 'TEMA 2', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_tipos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_tipos` (
+  `id_tipo` int(10) NOT NULL,
+  `nombre_tipo` varchar(100) NOT NULL,
+  `foto_tipo` varchar(100) NOT NULL,
+  `orden_tipo` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_tipos`
+--
+
+INSERT INTO `tbl_tipos` (`id_tipo`, `nombre_tipo`, `foto_tipo`, `orden_tipo`) VALUES
+(1, 'CAMISAS', '151111120659box_1.jpg', 5),
+(2, 'ZAPATOS', '151111120856box_2.jpg', 1),
+(3, 'PANTALONES', '1602011146241.jpg', 2),
+(4, 'POLOS', '1602011243161.jpg', 0),
+(5, 'ROPA', '1602010147571.jpg', 3),
+(6, 'ACCESORIOS', '1602010149441.jpg', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_tipos_marcas`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_tipos_marcas` (
+  `id_tipos_marcas` int(10) NOT NULL,
+  `fkmarcas_tipos_marcas` int(10) NOT NULL,
+  `foto_tipos_marcas` varchar(100) NOT NULL,
+  `fktipos_tipos_marcas` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_tipos_marcas`
+--
+
+INSERT INTO `tbl_tipos_marcas` (`id_tipos_marcas`, `fkmarcas_tipos_marcas`, `foto_tipos_marcas`, `fktipos_tipos_marcas`) VALUES
+(4, 8, '160127104330a.jpg', 2),
+(5, 4, '1602011207071.jpg', 3),
+(6, 4, '1602011224411.jpg', 2),
+(7, 4, '1602011225301.jpg', 1),
+(8, 5, '1602011234081.jpg', 1),
+(9, 5, '1602011236011.jpg', 3),
+(10, 5, '1602011243411.jpg', 4),
+(12, 5, '1602010148451.jpg', 5),
+(13, 5, '1602010150181.jpg', 6),
+(14, 2, '1602010152301.jpg', 1),
+(15, 2, '1602010153281.jpg', 2),
+(16, 2, '1602010154201.jpg', 6),
+(17, 9, '1602010159141.jpg', 4),
+(18, 9, '1602010159521.jpg', 3),
+(19, 9, '1602010200491.jpg', 2),
+(20, 9, '1602010201411.jpg', 6),
+(21, 3, '1602010203421.jpg', 6),
+(22, 3, '1602010204171.jpg', 4),
+(23, 3, '1602010204451.jpg', 3),
+(24, 6, '1602010350411.jpg', 4),
+(25, 6, '1602010351261.jpg', 3),
+(26, 6, '1602010352051.jpg', 2),
+(28, 6, '1602010359081.jpg', 1),
+(29, 6, '1602010359431.jpg', 5),
+(30, 6, '1602010400151.jpg', 6),
+(31, 7, '1602010403531.jpg', 1),
+(33, 7, '1602010408261.jpg', 3),
+(34, 7, '1602010409051.jpg', 4),
+(35, 7, '1602010409461.jpg', 5),
+(36, 2, '160216042105jellyfish.jpg', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_trabajadores`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_trabajadores` (
+  `id_tra` int(10) NOT NULL,
+  `nom_tra` varchar(100) NOT NULL,
+  `paterno_tra` varchar(100) NOT NULL,
+  `materno_tra` varchar(100) NOT NULL,
+  `dni_tra` char(8) NOT NULL,
+  `email_tra` varchar(100) NOT NULL,
+  `fk_rol` int(10) NOT NULL,
+  `user_tra` varchar(100) NOT NULL,
+  `pass_tra` varchar(100) NOT NULL,
+  `fkunidad_tra` int(10) NOT NULL,
+  `celular_tra` int(9) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_trabajadores`
+--
+
+INSERT INTO `tbl_trabajadores` (`id_tra`, `nom_tra`, `paterno_tra`, `materno_tra`, `dni_tra`, `email_tra`, `fk_rol`, `user_tra`, `pass_tra`, `fkunidad_tra`, `celular_tra`) VALUES
+(2, 'SQUARZI', 'TEST', 'TEST', '5466456', 'test@hotmail.com', 4, 'admin', '123', 9, 983636463);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_videos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_videos` (
+  `id_vi` int(10) NOT NULL,
+  `titulo_vi` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `foto_vi` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `link_vi` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `orden_vi` int(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_videos`
+--
+
+INSERT INTO `tbl_videos` (`id_vi`, `titulo_vi`, `foto_vi`, `link_vi`, `orden_vi`) VALUES
+(1, 'VIDEO 1', '160306120935video_2.jpg', 'https://www.youtube.com/watch?v=AosRxoh1-Jc', 1),
+(2, 'VIDEO 2', '160306121058video_2.jpg', 'https://www.youtube.com/watch?v=AosRxoh1-Jc', 3),
+(3, 'VIDEO 3', '160306121114video_2.jpg', 'https://www.youtube.com/watch?v=AosRxoh1-Jc', 2),
+(4, 'VIDEO 4', '160306121130video_2.jpg', 'https://www.youtube.com/watch?v=AosRxoh1-Jc', 0);
+
+--
+-- �ndices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `tbl_asesorias`
+--
+ALTER TABLE `tbl_asesorias`
+  ADD PRIMARY KEY (`id_ase`);
+
+--
+-- Indices de la tabla `tbl_asesorias_productos`
+--
+ALTER TABLE `tbl_asesorias_productos`
+  ADD PRIMARY KEY (`id_ase_pro`);
+
+--
+-- Indices de la tabla `tbl_categorias`
+--
+ALTER TABLE `tbl_categorias`
+  ADD PRIMARY KEY (`id_cate`);
+
+--
+-- Indices de la tabla `tbl_categorias_ofertas`
+--
+ALTER TABLE `tbl_categorias_ofertas`
+  ADD PRIMARY KEY (`id_cate_oferta`);
+
+--
+-- Indices de la tabla `tbl_clientes`
+--
+ALTER TABLE `tbl_clientes`
+  ADD PRIMARY KEY (`id_cli`);
+
+--
+-- Indices de la tabla `tbl_clientes_email`
+--
+ALTER TABLE `tbl_clientes_email`
+  ADD PRIMARY KEY (`id_em`);
+
+--
+-- Indices de la tabla `tbl_clientes_novedades`
+--
+ALTER TABLE `tbl_clientes_novedades`
+  ADD PRIMARY KEY (`id_no`);
+
+--
+-- Indices de la tabla `tbl_clientes_ofertas`
+--
+ALTER TABLE `tbl_clientes_ofertas`
+  ADD PRIMARY KEY (`id_ofe`);
+
+--
+-- Indices de la tabla `tbl_comentarios`
+--
+ALTER TABLE `tbl_comentarios`
+  ADD PRIMARY KEY (`id_comentario`);
+
+--
+-- Indices de la tabla `tbl_filtros`
+--
+ALTER TABLE `tbl_filtros`
+  ADD PRIMARY KEY (`id_filtro`);
+
+--
+-- Indices de la tabla `tbl_ideas`
+--
+ALTER TABLE `tbl_ideas`
+  ADD PRIMARY KEY (`id_ide`), ADD KEY `id_ide` (`id_ide`);
+
+--
+-- Indices de la tabla `tbl_ideas_productos`
+--
+ALTER TABLE `tbl_ideas_productos`
+  ADD PRIMARY KEY (`id_ide_pro`), ADD KEY `id_ide_pro` (`id_ide_pro`);
+
+--
+-- Indices de la tabla `tbl_items_categoria`
+--
+ALTER TABLE `tbl_items_categoria`
+  ADD PRIMARY KEY (`id_item_categoria`);
+
+--
+-- Indices de la tabla `tbl_items_filtro`
+--
+ALTER TABLE `tbl_items_filtro`
+  ADD PRIMARY KEY (`id_item_filtro`);
+
+--
+-- Indices de la tabla `tbl_magazines`
+--
+ALTER TABLE `tbl_magazines`
+  ADD PRIMARY KEY (`id_ma`);
+
+--
+-- Indices de la tabla `tbl_magazines_productos`
+--
+ALTER TABLE `tbl_magazines_productos`
+  ADD PRIMARY KEY (`id_ma_pro`);
+
+--
+-- Indices de la tabla `tbl_marcas`
+--
+ALTER TABLE `tbl_marcas`
+  ADD PRIMARY KEY (`id_marca`);
+
+--
+-- Indices de la tabla `tbl_ofertas`
+--
+ALTER TABLE `tbl_ofertas`
+  ADD PRIMARY KEY (`id_oferta`);
+
+--
+-- Indices de la tabla `tbl_pagos`
+--
+ALTER TABLE `tbl_pagos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tbl_popup`
+--
+ALTER TABLE `tbl_popup`
+  ADD PRIMARY KEY (`id_popup`);
+
+--
+-- Indices de la tabla `tbl_popup_home`
+--
+ALTER TABLE `tbl_popup_home`
+  ADD PRIMARY KEY (`id_popup_home`);
+
+--
+-- Indices de la tabla `tbl_preguntas`
+--
+ALTER TABLE `tbl_preguntas`
+  ADD PRIMARY KEY (`id_pre`);
+
+--
+-- Indices de la tabla `tbl_productos`
+--
+ALTER TABLE `tbl_productos`
+  ADD PRIMARY KEY (`id_producto`);
+
+--
+-- Indices de la tabla `tbl_productos_caracteristicas`
+--
+ALTER TABLE `tbl_productos_caracteristicas`
+  ADD PRIMARY KEY (`id_cara`);
+
+--
+-- Indices de la tabla `tbl_productos_categorias`
+--
+ALTER TABLE `tbl_productos_categorias`
+  ADD PRIMARY KEY (`id_productos_categorias`);
+
+--
+-- Indices de la tabla `tbl_productos_filtros`
+--
+ALTER TABLE `tbl_productos_filtros`
+  ADD PRIMARY KEY (`id_producto_filtros`);
+
+--
+-- Indices de la tabla `tbl_productos_fotos`
+--
+ALTER TABLE `tbl_productos_fotos`
+  ADD PRIMARY KEY (`id_productos_fotos`);
+
+--
+-- Indices de la tabla `tbl_productos_marcas`
+--
+ALTER TABLE `tbl_productos_marcas`
+  ADD PRIMARY KEY (`id_productos_marcas`);
+
+--
+-- Indices de la tabla `tbl_relacionar_productos`
+--
+ALTER TABLE `tbl_relacionar_productos`
+  ADD PRIMARY KEY (`id_re_pro`);
+
+--
+-- Indices de la tabla `tbl_roles`
+--
+ALTER TABLE `tbl_roles`
+  ADD PRIMARY KEY (`id_rol`);
+
+--
+-- Indices de la tabla `tbl_temas`
+--
+ALTER TABLE `tbl_temas`
+  ADD PRIMARY KEY (`id_tema`);
+
+--
+-- Indices de la tabla `tbl_tipos`
+--
+ALTER TABLE `tbl_tipos`
+  ADD PRIMARY KEY (`id_tipo`);
+
+--
+-- Indices de la tabla `tbl_tipos_marcas`
+--
+ALTER TABLE `tbl_tipos_marcas`
+  ADD PRIMARY KEY (`id_tipos_marcas`);
+
+--
+-- Indices de la tabla `tbl_trabajadores`
+--
+ALTER TABLE `tbl_trabajadores`
+  ADD PRIMARY KEY (`id_tra`), ADD KEY `trabajadores_roles` (`fk_rol`);
+
+--
+-- Indices de la tabla `tbl_videos`
+--
+ALTER TABLE `tbl_videos`
+  ADD PRIMARY KEY (`id_vi`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_asesorias`
+--
+ALTER TABLE `tbl_asesorias`
+  MODIFY `id_ase` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `tbl_asesorias_productos`
+--
+ALTER TABLE `tbl_asesorias_productos`
+  MODIFY `id_ase_pro` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT de la tabla `tbl_categorias`
+--
+ALTER TABLE `tbl_categorias`
+  MODIFY `id_cate` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT de la tabla `tbl_categorias_ofertas`
+--
+ALTER TABLE `tbl_categorias_ofertas`
+  MODIFY `id_cate_oferta` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `tbl_clientes`
+--
+ALTER TABLE `tbl_clientes`
+  MODIFY `id_cli` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `tbl_clientes_email`
+--
+ALTER TABLE `tbl_clientes_email`
+  MODIFY `id_em` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `tbl_clientes_novedades`
+--
+ALTER TABLE `tbl_clientes_novedades`
+  MODIFY `id_no` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tbl_clientes_ofertas`
+--
+ALTER TABLE `tbl_clientes_ofertas`
+  MODIFY `id_ofe` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `tbl_comentarios`
+--
+ALTER TABLE `tbl_comentarios`
+  MODIFY `id_comentario` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `tbl_filtros`
+--
+ALTER TABLE `tbl_filtros`
+  MODIFY `id_filtro` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT de la tabla `tbl_ideas`
+--
+ALTER TABLE `tbl_ideas`
+  MODIFY `id_ide` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tbl_ideas_productos`
+--
+ALTER TABLE `tbl_ideas_productos`
+  MODIFY `id_ide_pro` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `tbl_items_categoria`
+--
+ALTER TABLE `tbl_items_categoria`
+  MODIFY `id_item_categoria` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT de la tabla `tbl_items_filtro`
+--
+ALTER TABLE `tbl_items_filtro`
+  MODIFY `id_item_filtro` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT de la tabla `tbl_magazines`
+--
+ALTER TABLE `tbl_magazines`
+  MODIFY `id_ma` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT de la tabla `tbl_magazines_productos`
+--
+ALTER TABLE `tbl_magazines_productos`
+  MODIFY `id_ma_pro` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT de la tabla `tbl_marcas`
+--
+ALTER TABLE `tbl_marcas`
+  MODIFY `id_marca` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT de la tabla `tbl_ofertas`
+--
+ALTER TABLE `tbl_ofertas`
+  MODIFY `id_oferta` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tbl_pagos`
+--
+ALTER TABLE `tbl_pagos`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tbl_popup`
+--
+ALTER TABLE `tbl_popup`
+  MODIFY `id_popup` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT de la tabla `tbl_popup_home`
+--
+ALTER TABLE `tbl_popup_home`
+  MODIFY `id_popup_home` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `tbl_preguntas`
+--
+ALTER TABLE `tbl_preguntas`
+  MODIFY `id_pre` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `tbl_productos`
+--
+ALTER TABLE `tbl_productos`
+  MODIFY `id_producto` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT de la tabla `tbl_productos_caracteristicas`
+--
+ALTER TABLE `tbl_productos_caracteristicas`
+  MODIFY `id_cara` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT de la tabla `tbl_productos_categorias`
+--
+ALTER TABLE `tbl_productos_categorias`
+  MODIFY `id_productos_categorias` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT de la tabla `tbl_productos_filtros`
+--
+ALTER TABLE `tbl_productos_filtros`
+  MODIFY `id_producto_filtros` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT de la tabla `tbl_productos_fotos`
+--
+ALTER TABLE `tbl_productos_fotos`
+  MODIFY `id_productos_fotos` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
+--
+-- AUTO_INCREMENT de la tabla `tbl_productos_marcas`
+--
+ALTER TABLE `tbl_productos_marcas`
+  MODIFY `id_productos_marcas` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT de la tabla `tbl_relacionar_productos`
+--
+ALTER TABLE `tbl_relacionar_productos`
+  MODIFY `id_re_pro` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT de la tabla `tbl_roles`
+--
+ALTER TABLE `tbl_roles`
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `tbl_temas`
+--
+ALTER TABLE `tbl_temas`
+  MODIFY `id_tema` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `tbl_tipos`
+--
+ALTER TABLE `tbl_tipos`
+  MODIFY `id_tipo` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `tbl_tipos_marcas`
+--
+ALTER TABLE `tbl_tipos_marcas`
+  MODIFY `id_tipos_marcas` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
+--
+-- AUTO_INCREMENT de la tabla `tbl_trabajadores`
+--
+ALTER TABLE `tbl_trabajadores`
+  MODIFY `id_tra` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `tbl_videos`
+--
+ALTER TABLE `tbl_videos`
+  MODIFY `id_vi` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;

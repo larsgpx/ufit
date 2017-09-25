@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta name="description" content="DaCast provides Entel Demo, a video streaming service in our Default file section, provided by jorgelopez_3" />
+    <meta name="keywords" content="Video streaming service, Entel Demo - Video" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- FaceBook  -->
+    <meta property="og:title" content="Entel Demo" />
+    <meta property="og:description" content="Esta es una descripción de prueba para la transmisión que estará muy chévere. from jorgelopez_3" />
+    <meta property="og:site_name" content="Dacast - Live Streaming Services and Video Hosting Platform" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:url" content="http://Entel.fullvideostreaming.com/" />
+    <meta property="fb:admins" content="100002239022743" />
+
+    <!-- SplashScreen --> 
+                        <meta property="og:image" content="http://dc_images.s3.amazonaws.com/66452/sc-261416-5.png" />
+            <meta property="og:image:secure_url" content="https://dc_images.s3.amazonaws.com/66452/sc-261416-5.png" />
+                <!-- end SplashScreen -->
+
+    <meta property="og:type" content="video.other" />
+    <!-- application flash -->
+    <meta property="og:video:type" content="application/x-shockwave-flash" />
+    <meta property="og:video" content="https://player.dacast.com/DacastPlayerHD.swf?c=66452_261416&fb=true" />
+    <meta property="og:video:secure_url" content="https://player.dacast.com/DacastPlayerHD.swf?c=66452_261416&fb=true" />
+    <meta property="og:video:width" content="512" />
+    <meta property="og:video:height" content="288" />
+    <!-- html5 -->
+    <meta property="og:video:type" content="text/html" />
+    <meta property="og:video" content="http://Entel.fullvideostreaming.com&fb=true" />
+    <meta property="og:video:secure_url" content="https://iframe.dacast.com/b/66452/c/261416&fb=true" />
+    <meta property="og:video:width" content="512" />
+    <meta property="og:video:height" content="288" />
+
+    <!-- twitter  -->
+    <meta name="twitter:card" content="player" />
+    <meta name="twitter:site" content="@DaCastsf" />
+    <meta name="twitter:url" content="http://iframe.dacast.com/b/66452/c/261416" />
+    <meta name="twitter:title" content="Entel Demo" />
+    <meta name="twitter:description" content="Esta es una descripción de prueba para la transmisión que estará muy chévere. from jorgelopez_3" />
+    <!-- SplashScreen -->
+                        <meta name="twitter:image" content="https://dc_images.s3.amazonaws.com/66452/sc-261416-5.png" />
+                <!-- end SplashScreen -->
+    <meta name="twitter:player" content="https://iframe.dacast.com/b/66452/c/261416" />
+    <meta name="twitter:player:width" content="512" />
+    <meta name="twitter:player:height"  content="288" />
+<style> body { background-color: black; margin:0px; padding:0px; } </style>
+
+</head>
+<body>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            window.console = window.console || function (t) {};
+        </script>
+<script type="text/javascript" src="//player.dacast.com/js/dacast_player.js"></script>
+
+<div class="center vidbody" >
+			<script type="text/javascript">
+				var myPlayer;
+				$(function () {
+					myPlayer = dacast('66452_c_261416', 'fvsplayer', {width: '100%', height: '100%'});
+					myPlayer.onReady(function () {
+						console.log('video ready')
+						$(".dacast-dock-tool-tip.slideIn.bottom").html("Espectadores");
+						$(".dacast-error-headline").html("La transmisión todavía no está disponible todavía.");
+						$(".dacast-error-ok-button").html("Aceptar");
+					});
+				});
+			</script>
+			<div id="fvsplayer" style="position:absolute; left:0; right:0; bottom:0; top:0"></div>
+		</div>
+
+
+
+
+</body>
+</html>
